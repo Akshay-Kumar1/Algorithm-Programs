@@ -7,5 +7,6 @@ function primenos(){
         var min = prompt('Enter first number : ');
         var max = prompt('Enter second number : ');
         utility.primenos(min,max)
+
 }
 primenos()
