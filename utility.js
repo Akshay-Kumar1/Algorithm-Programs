@@ -1,4 +1,15 @@
 module.exports={
+    getCurrentTime : function()
+{   
+    var d=new Date(); // fetches the current date
+    var n=d.getTime(); // fetches current time
+    return n;
+},
+getElapsedTime : function(startTime,stopTime)
+{
+    var elapsed = (stopTime-startTime)/1000; // elapsed time from start to stop
+    return elapsed;
+},
 
     anagram : function(str0,str)
     {   
@@ -134,10 +145,12 @@ return 0;
   bubble : function(number)
   {     var prompt = require('prompt-sync')()
         var temp;
+        var num;
         var arr = new Array(number)
+        num=number
         for(var i=0;i<number;i++)
         {
-            arr[i]=prompt('Enter ' + number + ' elements ')
+            arr[i]=prompt('Enter ' + num-- + ' element(s) : ')
         }
     
        for(var i=0;i<arr.length-1;i++)
@@ -311,5 +324,194 @@ notes : function(amount)
     count=parseInt(count);
     console.log('Total number of notes that the machine should provide is : ' + count)
 },
-}   
+
+mergeSort : function(size)
+{
+        var prompt=require('prompt-sync')();
+        var arr=new Array(size);
+            for(var i=0;i<size;i++)
+            {
+                arr[i]=prompt("enter elements: ");
+                
+            }
+            console.log((arr));
+           // console.log("before merge arr len "+arr.length);
+            this.merge((arr));
+            //console.log("after merge arr len "+arr.length);
+            arr.forEach(element =>
+                {
+            
+                    console.log(parseInt(element));
+                });
+    },  
+    merge : function(arr)
+    {
+        if(arr.length==1)
+        {
+            return; 
+        }
+        var m=Math.floor(arr.length/2);
+        var a1=new Array(m);
+        var a2=new Array(arr.length-m);
+        var i;
+        for(i=0;i<a1.length;i++)
+        {
+            a1[i]=parseInt(arr[i]);
+            
+        }
+        for(var j=0;j<a2.length;j++,i++)
+        {
+            a2[j]=parseInt(arr[i]);
+            
+        }
+        this.merge(a1);
+        this.merge(a2);
+        this.merger(a1,a2,arr);
+    },
+    merger : function(a,b,c)
+    {
+        var i=0,j=0,k=0;
+        while(i<a.length && j<b.length)
+        {
+            if(a[i]<b[j])
+            {
+                c[k]=parseInt(a[i]);
+                i++;
+                k++;
+            }
+            else
+            {
+                c[k]=parseInt(b[j]);
+                k++;
+                j++;
+            }
+        }
+        while(i<a.length)
+        {
+            c[k]=parseInt(a[i]);
+            k++;
+            i++;
+        }
+        while(j<b.length)
+        {
+            c[k]=parseInt(b[j]);
+            k++;
+            j++;
+        }
+},
+
+toBinary : function(number)
+{
+    if(number ==0)
+    {
+        console.log(0);
+    }
+    else
+    {
+        var arr = [],i;    
+      
+    for(i=0;number>0;i++)    
+    {    
+        arr[i]=Math.floor(number%2);    
+        number=Math.floor(number/2);    
+    }    
+    console.log("\nBinary of Given Number is=");     
+   // for(i=arr.length-1;i>=0;i--)
+    console.log(arr.reverse());       
+    return 0;
+    }
+      
+},
+nibbleSwap : function(number)
+{   
+    var flag=0
+    var temp1 , temp2 
+    temp1 = number & 0x0F
+    temp2 = number & 0xF0
+    temp1 = temp1 << 4
+    temp2 = temp2 >> 4
+    console.log(temp1|temp2)
+    var result = temp1|temp2
+        for(n=result ; n>0 ;n--)
+        {
+            if(result==Math.pow(2,n))
+            {
+                flag=1
+                break     
+            }
+        }
+        if(flag==1)
+        console.log('Number is power of ' + (n))   
+        else
+        console.log('Not a power of 2')
+},
+
+calender : function(date,month,year)
+{   
+    var d,m,y,x;
+    y = parseInt(year-Math.floor((14-month)/12))
+    x = parseInt(y + Math.floor((y/4) - y/100 + y/400))
+    m = parseInt(month + 12 * Math.floor((14-month)/12) -2)
+    d = parseInt((date + x + 31 *Math.floor((m / 12))) % 7)
+    switch(m)
+    {
+        case 1 : console.log('January')
+                    break;
+        case 2 : console.log('February')
+                    break;
+        case 3 : console.log('March')
+                    break;
+        case 4 : console.log('April')
+                    break;
+        case 5 : console.log('May')
+                    break;
+        case 6 : console.log('June')
+                    break;
+        case 7 : console.log('July')
+                    break;
+        case 8 : console.log('August')
+                    break;
+        case 9 : console.log('September')
+                    break;
+        case 10 : console.log('October')
+                    break;
+        case 11 : console.log('November')
+                    break;
+        case 12 : console.log('December')
+                    break;
+    }
+    switch(d)
+    {
+        case 0 : console.log('Day is Sunday')
+                 break;
+        case 1 : console.log('Day is Monday')
+                 break;
+        case 2 : console.log('Day is Tuesday')
+                 break;
+        case 3 : console.log('Day is Wednesday')
+                 break;
+        case 4 : console.log('Day is Thursday')
+                 break;
+        case 5 : console.log('Day is Friday')
+                 break;
+        case 6 : console.log('Day is Saturday')
+                 break;
+    }
+},
+guessNumber : function(number)
+{
+    var num = Math.pow(2,number)
+    console.log('Think of a number between 0 ' + num-1 )
+    var arr = []
+    for(i=0;i<=num-1;i++)
+    {
+        arr[i]= ++num
+    }
+    this.binary()
+},
+
+}
+
+
+  
 
