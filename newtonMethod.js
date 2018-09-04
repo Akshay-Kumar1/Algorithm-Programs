@@ -1,9 +1,9 @@
 var prompt = require('prompt-sync')()
 var utility = require('/home/adminsitrator/Documents/akshayk/algorithm programs/utility/utility.js')
 
-function newtons()
+function newtonMethod()
 {   
-    var c = prompt('Enter non negative number : ');
-    utility.newtons(c)
+    var number = prompt('Enter non negative number : ');
+    utility.newtonMethod(number)
 }
-newtons()
+newtonMethod()

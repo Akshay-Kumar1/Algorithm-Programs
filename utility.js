@@ -1,16 +1,19 @@
 module.exports={
-    getCurrentTime : function()
+    getcurrentTime : function()
 {   
     var d=new Date(); // fetches the current date
     var n=d.getTime(); // fetches current time
     return n;
 },
-getElapsedTime : function(startTime,stopTime)
+getelapsedTime : function(startTime,stopTime)
 {
     var elapsed = (stopTime-startTime)/1000; // elapsed time from start to stop
     return elapsed;
 },
-
+    /**
+     * @description : Take 2 Strings as Input and Check for Anagrams
+     * @param : (str0 and str)strings
+     */
     anagram : function(str0,str)
     {   
         if(!NaN)
@@ -19,7 +22,7 @@ getElapsedTime : function(startTime,stopTime)
         var s1 = str0.toLowerCase().split('').sort().join('').trim();
         var s2 = str.toLowerCase().split('').sort().join('').trim();
         
-        if(s1===s2)
+        if(s1===s2) // if resultant strings are equal
         {
             console.log('Its an Anagram')
         }
@@ -33,10 +36,14 @@ getElapsedTime : function(startTime,stopTime)
         console.log('Not a String')
     }
 },
+    /**
+     * @description : Prints numbers between min and max
+     * @param : numbers (min and max)
+     */
     primenos : function(min,max)
     {
 
-        if (min > max) 
+        if (min > max) //if entered from gh to low , swap numbers
         {
             temp = min;
             min = max;
@@ -44,13 +51,13 @@ getElapsedTime : function(startTime,stopTime)
         }
 
     var  i, flag=0
-    while (min < max)
+    while (min < max)  
     {
         flag = 0;
 
-        for(i = 2; i <= min/2; ++i)
+        for(i = 2; i <= min/2; ++i) 
         {
-            if(min % i == 0)
+            if(min % i == 0) //check if number is divisible and leaves remainder 0
             {
                 flag = 1;
                 break;
@@ -60,12 +67,16 @@ getElapsedTime : function(startTime,stopTime)
         if (flag == 0 && min!=0)
             console.log(min);
 
-        ++min;
+        ++min; //increment min number
     }
 
     return 0;
 
 },
+    /**
+     * @description : prints palindromic - anagrams between provided range
+     * @param :range in integers , (min and max)
+     */
  primePalin : function(min , max){
     var char = min
     if (min > max) 
@@ -101,12 +112,16 @@ return 0;
 
  },
 
+     /**
+     * @description : Searches integer using binary search algorithm
+     * @param : size of array(number)
+     */
  binary : function(number)
  {      
         var prompt=require('prompt-sync')()
         var arr = new Array(number);
         var check = 0; 
-        for(var i=0;i<number;i++)
+        for(var i=0;i<number;i++) // prompt integers
         {
             arr[i] = prompt('Enter the numbers : ')
         }
@@ -114,12 +129,12 @@ return 0;
         arr.sort();
         console.log(arr)
         var low = 0,high =number-1;
-        var key = prompt('Enter the element to be searched : ')
+        var key = prompt('Enter the element to be searched : ') // set key value
         
         while(low<=high)
         {
             var mid = Math.floor((low+high)/2)
-            if(key == arr[mid])
+            if(key == arr[mid]) //if key = mid , element found!!!!
             {
                 check = 1 ;
                 break;
@@ -127,9 +142,9 @@ return 0;
             else 
             {
                 if (key > arr[mid])
-                    low = mid + 1
+                    low = mid + 1 // set low after mid
                 else 
-                    high = mid - 1   
+                    high = mid - 1   // set high before mid
             }
 
         }
@@ -141,16 +156,19 @@ return 0;
         return 0;
         
     },
-
+    /**
+     * @description : prints ascending order of arrary
+     * @param : size of arrary (number)
+     */
   bubble : function(number)
   {     var prompt = require('prompt-sync')()
         var temp;
         var num;
-        var arr = new Array(number)
+        var arr = new Array(number) // create new Arrary()
         num=number
         for(var i=0;i<number;i++)
         {
-            arr[i]=prompt('Enter ' + num-- + ' element(s) : ')
+            arr[i]=prompt('Enter ' + num-- + ' element(s) : ') 
         }
     
        for(var i=0;i<arr.length-1;i++)
@@ -160,7 +178,7 @@ return 0;
              {
                  if(arr[j]>arr[j+1])
                  {
-                     var temp=parseInt(arr[j]);
+                     var temp=parseInt(arr[j]); //swap the integers if greater
                      (arr[j])=parseInt(arr[j+1]);
                      (arr[j+1])=temp;
                  }
@@ -170,7 +188,10 @@ return 0;
             console.log(arr)
         
   },
-
+     /**
+     * @description : performs ascendind order sort of inputted integers
+     * @param : size of arrary (number)
+     */
   insertionSort : function(number)
 {
   var c, d, t;
@@ -178,7 +199,7 @@ return 0;
   var prompt = require('prompt-sync')()
   for (c = 0; c < number; c++) 
   {
-        array[c] = prompt('Enter the elements')
+        array[c] = prompt('Enter the elements') // input the integers
   }
     console.log(array)
     for (c = 1 ; c <= number - 1; c++) 
@@ -188,7 +209,7 @@ return 0;
       while ( d > 0 && array[d-1] > array[d]) 
       {
         t  = parseInt(array[d]);
-        array[d]  = parseInt(array[d-1]);
+        array[d]  = parseInt(array[d-1]); // swap
         array[d-1] = t;
         d--;
      }
@@ -200,7 +221,10 @@ return 0;
 
     return 0;
 },
-
+     /**
+     * @description : searches the string from a text file 
+     * @param : array , string to be searched (toSearch)
+     */
 wordsList : function(arr,toSearch)
 {   
     arr=arr.sort();
@@ -232,6 +256,10 @@ wordsList : function(arr,toSearch)
     return 0;
     
 },
+    /**
+     * @description : calculates the monthly payment using the formula
+     * @param : principal ,years, rate)
+     */
 payment : function(principal,years,rate)
 {   
     var r = rate/(12*100)
@@ -240,31 +268,38 @@ payment : function(principal,years,rate)
     console.log('Monthly Payment is ' +payment)
     
 },
-
-newtons : function(c)
+    /**
+     * @description : calculation of square root of given number using newtons method
+     * @param : number
+     */
+newtonMethod : function(number)
 {
-    if(c>=0)
+    if(number>=0)
     {
-        var epsilon = 1e-15
-        var t=c;
-        while(Math.abs(t-c/t)>epsilon*t)
+        var epsilon = 1e-15 //fixed value of epsilon
+        var t=number;
+        while(Math.abs(t-number/t)>epsilon*t)
         {
-            t = (c/t + t)/2.0
+            t = (number/t + t)/2.0 //formula
         }
-        console.log(t)
+        console.log('Square root of given number : ' + t) // o/p : square root of the number 
     }
     else
     {
         console.log('Not a positive number')    
     }
 },
+    /**
+     * @description : calculates the minimum number of notes to be returned by the vending machine
+     * @param : cash (amount)
+     */
 notes : function(amount)
 {
     var count=0;
     value=1;
     switch(value)
     {
-        case 1 : if(amount/1000>=1)
+        case 1 : if(amount/1000>=1) // case for 1000 note
                     {   
                         var res =Math.floor(amount/1000)
                         console.log('Number of 1000 notes : ' +res)
@@ -272,49 +307,49 @@ notes : function(amount)
                         count=count + res                    
                     }
                 
-        case 2 : if(amount/500>=1)
+        case 2 : if(amount/500>=1)  // case for 500 note
                     {
                         var res1=Math.floor(amount/500)
                         console.log('Number of 500 notes : '+res1)
                         amount=amount-(res1*500)
                         count=count + res1
                     }
-        case 3 : if(amount/100>=1)
+        case 3 : if(amount/100>=1)  // case for 100 note
                     {
                         var res2=Math.floor(amount/100)
                         console.log('Number of 100 notes : '+res2)
                         amount=amount-(res2*100)
                         count=count + res2
                     }
-        case 4 : if(amount/50>=1)
+        case 4 : if(amount/50>=1)   // case for 50 note
                     {
                         var res3=Math.floor(amount/50)
                         console.log('Number of 50 notes : '+res3)
                         amount=amount-(res3*50)
                         count=count + res3
                     }
-        case 5 : if(amount/10>=1)
+        case 5 : if(amount/10>=1)   // case for 10 note
                     {
                         var res4=Math.floor(amount/10)
                         console.log('Number of 10 notes : '+res4)
                         amount=amount-(res4*10)
                         count=count + res4
                     }
-        case 6 : if(amount/5>=1)
+        case 6 : if(amount/5>=1)    // case for 5 note
                     {
                         var res5=Math.floor(amount/5)
                         console.log('Number of 5 notes : '+res5)
                         amount=amount-(res5*5)
                         count=count + res5
                     }  
-        case 7 : if(amount/2>=1)
+        case 7 : if(amount/2>=1) // case for 2 note
                     {
                         var res6=Math.floor(amount/2)
                         console.log('Number of 2 notes : '+res6)
                         amount=amount-(res6*2)
                         count=count + res6
                     }
-        case 8 : if(amount/1>=1)
+        case 8 : if(amount/1>=1)    // case for 1 note
                     {
                         var res7=Math.floor(amount/1)
                         console.log('Number of 1 notes : '+res7)
@@ -324,7 +359,10 @@ notes : function(amount)
     count=parseInt(count);
     console.log('Total number of notes that the machine should provide is : ' + count)
 },
-
+    /**
+     * @description : sorts the integer , using divide and conquer method 
+     * @param : size
+     */
 mergeSort : function(size)
 {
         var prompt=require('prompt-sync')();
@@ -399,7 +437,10 @@ mergeSort : function(size)
             j++;
         }
 },
-
+    /**
+     * @description : converts the decimal number into binary
+     * @param : number
+     */
 toBinary : function(number)
 {
     if(number ==0)
@@ -412,8 +453,8 @@ toBinary : function(number)
       
     for(i=0;number>0;i++)    
     {    
-        arr[i]=Math.floor(number%2);    
-        number=Math.floor(number/2);    
+        arr[i]=Math.floor(number%2); //remainder into array   
+        number=Math.floor(number/2); // quotient into number
     }    
     console.log("\nBinary of Given Number is=");     
    // for(i=arr.length-1;i>=0;i--)
@@ -422,40 +463,52 @@ toBinary : function(number)
     }
       
 },
+    /**
+     * @description : swaps the nibble with next / previous 4 bits and checks if resultant is power of 2
+     * @param : number
+     */
 nibbleSwap : function(number)
 {   
     var flag=0
     var temp1 , temp2 
     temp1 = number & 0x0F
     temp2 = number & 0xF0
-    temp1 = temp1 << 4
-    temp2 = temp2 >> 4
+    temp1 = temp1 << 4 // left shift 
+    temp2 = temp2 >> 4 // right shift
     console.log(temp1|temp2)
     var result = temp1|temp2
         for(n=result ; n>0 ;n--)
         {
-            if(result==Math.pow(2,n))
+            if(result==Math.pow(2,n)) // checking if the number is power of 2
             {
                 flag=1
                 break     
             }
         }
         if(flag==1)
-        console.log('Number is power of ' + (n))   
+        console.log('Number is power of ' + (n))   // o/p 
         else
         console.log('Not a power of 2')
 },
-
+    /**
+     * @description : returns the day on which the provided date falls
+     * @param : date,month,year
+     */
 calender : function(date,month,year)
 {   
     var d,m,y,x;
-    y = parseInt(year-Math.floor((14-month)/12))
-    x = parseInt(y + Math.floor((y/4) - y/100 + y/400))
-    m = parseInt(month + 12 * Math.floor((14-month)/12) -2)
-    d = parseInt((date + x + 31 *Math.floor((m / 12))) % 7)
-    switch(m)
+    y = year-Math.floor((14-month)/12)  //formula for calculating the day
+    y = parseInt(y)
+    x = y + Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400)
+    x = parseInt(x)
+    m = month + 12 * Math.floor((14-month)/12) -2
+    m = parseInt(m)
+    d = ((date + x + Math.floor(((31*m) / 12))) % 7)
+    d = parseInt(d)
+
+    switch(parseInt(month))
     {
-        case 1 : console.log('January')
+        case 1 : console.log('January') //cases for months of an year
                     break;
         case 2 : console.log('February')
                     break;
@@ -480,9 +533,9 @@ calender : function(date,month,year)
         case 12 : console.log('December')
                     break;
     }
-    switch(d)
+    switch(d) 
     {
-        case 0 : console.log('Day is Sunday')
+        case 0 : console.log('Day is Sunday') //cases for day of the week
                  break;
         case 1 : console.log('Day is Monday')
                  break;
@@ -498,20 +551,151 @@ calender : function(date,month,year)
                  break;
     }
 },
+    /**
+     * @description : aks a command­line argument N,asks you to think of a number between 0 and N­1,
+     * where N = 2^n,and always guesses the answer with n questions
+     * @param : number 
+     */
 guessNumber : function(number)
 {
-    var num = Math.pow(2,number)
-    console.log('Think of a number between 0 ' + num-1 )
-    var arr = []
-    for(i=0;i<=num-1;i++)
-    {
-        arr[i]= ++num
-    }
-    this.binary()
+    var prompt =require('prompt-sync')()
+    var n = Math.pow(2,number)
+    console.log('Think of a number between 0 and ' + n )
+    var low = 0;
+    var high = n;
+    var secret = this.question(low,high)
+    console.log('Your number is '+secret)
 },
+question : function(low ,high) //function for binary searching of the integer
+{
+    var prompt =require('prompt-sync')()
+    if ((high - low) == 1) 
+    return low;
+    else
+    var mid =low + (high-low) / 2; //calculates the middle
+    console.log("Is it less than  " , +mid)
+    var choice = prompt('Enter the choice in true or false : ')
+    if(choice ==='true')
+    {
+        return this.question(low,mid)
+    }
+    else if(choice === 'false')
+    {
+        return this.question(mid,high)
+    }
+    else
+    {
+        console.log('Not valid') // not a valid option
+    }
+},
+     /**
+     * @description : searches the input string using binary search
+     * @param : the size of the array (number)
+     */
+binaryString : function(number)
+ {      
+        var prompt=require('prompt-sync')()
+        var arr = new Array(number);
+        var check = 0; 
+        for(var i=0;i<number;i++)
+        {
+            arr[i] = prompt('Enter the numbers : ') // prompts the elements of the array
+        }
 
-}
+        arr.sort();
+        console.log(arr)
+        var low = 0,high =number-1;
+        var key = prompt('Enter the element to be searched : ') //set key value
+        
+        while(low<=high)
+        {
+            var mid = Math.floor((low+high)/2) // mid inder of the array
+            if(key == arr[mid])
+            {
+                check = 1 ;
+                break;
+            }
+            else 
+            {
+                if (key > arr[mid])
+                    low = mid + 1
+                else 
+                    high = mid - 1   
+            }
 
-
+        }
+        if(check==1)
+        console.log('Element found at index '+ mid)  //o/p the index
+        
+        else 
+        console.log('Not found ')
+        return 0;
+        
+    },
+    /**
+     * @description : bubble sort method for strings
+     * @param : number
+     */
+    bubbleString : function(number)
+  {     var prompt = require('prompt-sync')()
+        var temp;
+        var num;
+        var arr = new Array(number) // create new array
+        num=number
+        for(var i=0;i<number;i++)
+        {
+            arr[i]=prompt('Enter ' + num-- + ' element(s) : ')
+        }
+    
+       for(var i=0;i<arr.length-1;i++)
+        {
+        
+             for(var j=0;j<arr.length-1-i;j++)
+             {
+                 if(arr[j]>arr[j+1])
+                 {
+                     var temp=(arr[j]); // swapping of strings
+                     (arr[j])=(arr[j+1]);
+                     (arr[j+1])=temp;
+                 }
+             }
+        }   
+            console.log('Sorted array')
+            console.log(arr)
   
+},
+    /**
+     * @description : insertionSort method for strings
+     * @param : number
+     */
+insertionSortString : function(number)
+{
+  var c, d, t;
+  var array = new Array(number)
+  var prompt = require('prompt-sync')()
+  for (c = 0; c < number; c++) 
+  {
+        array[c] = prompt('Enter the elements') // push elements int array
+  }
+    console.log(array)
+    for (c = 1 ; c <= number - 1; c++) 
+    {
+         d = c;
+ 
+      while ( d > 0 && array[d-1] > array[d]) 
+      {
+        t  = (array[d]);
+        array[d]  = (array[d-1]); // swapping the strings
+        array[d-1] = t;
+        d--;
+     }
+  }
+ 
+    console.log("Sorted list in ascending order:\n");
+ 
+    console.log(array);
+
+    return 0;
+},
+}  
 

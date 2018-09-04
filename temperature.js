@@ -20,13 +20,14 @@ function temperature()
     switch(choice)
     {   
 
-        case '1' :    cresult =  Math.floor((celsius * 9/5) + 32); 
+        case '1' :  cresult =  Math.floor((celsius * 9/5) + 32); 
                     console.log(cresult + ' F ');
                     break;
-        case '2' :    fresult = Math.floor ((fahrenheit - 32) * 5/9);
+        case '2' :  fresult = Math.floor ((fahrenheit - 32) * 5/9);
                     console.log(fresult + ' C ');
                     break;
-        default :   return 0;
+        default :   console.log('Invalid Entry')
+                    return -1;
 
     }
 }
