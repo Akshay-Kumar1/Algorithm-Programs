@@ -43,7 +43,7 @@ getelapsedTime : function(startTime,stopTime)
     primenos : function(min,max)
     {
 
-        if (min > max) //if entered from gh to low , swap numbers
+        if (min > max) //if range in max to min , swap numbers
         {
             temp = min;
             min = max;
@@ -77,7 +77,8 @@ getelapsedTime : function(startTime,stopTime)
      * @description : prints palindromic - anagrams between provided range
      * @param :range in integers , (min and max)
      */
- primePalin : function(min , max){
+ primePalin : function(min , max)
+ {
     var char = min
     if (min > max) 
     {
@@ -102,8 +103,11 @@ while (min < max)
 
     if (flag == 0 && min!=0)
        { 
-         if(min.toString().split('').reverse().join('')==min && char.toString().split('').sort().join('').trim())
-         console.log(min)
+         console.log('Prime Numbers : ' +min)
+         if(min.toString().split('').reverse().join('')==min)
+         console.log('Prime Palindromes are '+min)
+         if(min.toString().split('').sort().join('').trim())
+         console.log('Prime Anagrams are ' +min)
        }
        ++min;
 }
@@ -213,7 +217,7 @@ return 0;
         array[d-1] = t;
         d--;
      }
-  }
+    }
  
     console.log("Sorted list in ascending order:\n");
  
@@ -470,6 +474,7 @@ toBinary : function(number)
 nibbleSwap : function(number)
 {   
     var flag=0
+    this.toBinary(number)
     var temp1 , temp2 
     temp1 = number & 0x0F
     temp2 = number & 0xF0
@@ -477,6 +482,7 @@ nibbleSwap : function(number)
     temp2 = temp2 >> 4 // right shift
     console.log(temp1|temp2)
     var result = temp1|temp2
+    this.toBinary(result)
         for(n=result ; n>0 ;n--)
         {
             if(result==Math.pow(2,n)) // checking if the number is power of 2
@@ -506,48 +512,21 @@ calender : function(date,month,year)
     d = ((date + x + Math.floor(((31*m) / 12))) % 7)
     d = parseInt(d)
 
-    switch(parseInt(month))
-    {
-        case 1 : console.log('January') //cases for months of an year
-                    break;
-        case 2 : console.log('February')
-                    break;
-        case 3 : console.log('March')
-                    break;
-        case 4 : console.log('April')
-                    break;
-        case 5 : console.log('May')
-                    break;
-        case 6 : console.log('June')
-                    break;
-        case 7 : console.log('July')
-                    break;
-        case 8 : console.log('August')
-                    break;
-        case 9 : console.log('September')
-                    break;
-        case 10 : console.log('October')
-                    break;
-        case 11 : console.log('November')
-                    break;
-        case 12 : console.log('December')
-                    break;
-    }
     switch(d) 
     {
-        case 0 : console.log('Day is Sunday') //cases for day of the week
+        case 0 : console.log(+date+'/'+month+'/'+year + ' is Sunday') //cases for day of the week
                  break;
-        case 1 : console.log('Day is Monday')
+        case 1 : console.log(+date+'/'+month+'/'+year + ' is Monday')
                  break;
-        case 2 : console.log('Day is Tuesday')
+        case 2 : console.log(+date+'/'+month+'/'+year + ' is Tuesday')
                  break;
-        case 3 : console.log('Day is Wednesday')
+        case 3 : console.log(+date+'/'+month+'/'+year + ' is Wednesday')
                  break;
-        case 4 : console.log('Day is Thursday')
+        case 4 : console.log(+date+'/'+month+'/'+year + ' is Thursday')
                  break;
-        case 5 : console.log('Day is Friday')
+        case 5 : console.log(+date+'/'+month+'/'+year + ' is Friday')
                  break;
-        case 6 : console.log('Day is Saturday')
+        case 6 : console.log(+date+'/'+month+'/'+year + ' is Saturday')
                  break;
     }
 },
